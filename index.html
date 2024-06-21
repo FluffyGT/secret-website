@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secret Button</title>
+    <title>Secret Video Button</title>
     <style>
         body {
             background-color: cyan;
@@ -25,14 +25,23 @@
         .secret-button:hover {
             background-color: darkred;
         }
+        #video {
+            display: none;
+            width: 80%;
+            max-width: 800px;
+        }
     </style>
 </head>
 <body>
-    <button class="secret-button" onclick="rickRoll()">SECRET</button>
+    <button class="secret-button" onclick="showVideo()">SECRET</button>
+    <video id="video" controls>
+        <source src="rickroll.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <script>
-        function rickRoll() {
-            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        function showVideo() {
+            document.getElementById('video').style.display = 'block';
         }
     </script>
 </body>
