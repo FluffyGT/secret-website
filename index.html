@@ -12,6 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column;
         }
         .secret-button {
             padding: 20px 40px;
@@ -21,27 +22,47 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         .secret-button:hover {
             background-color: darkred;
+        }
+        .secret-button:focus {
+            outline: none;
+        }
+        @keyframes button-animation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-100px) scale(1.5); }
+            100% { transform: translateY(0) scale(0); }
+        }
+        .animate {
+            animation: button-animation 1s ease forwards;
         }
         #video {
             display: none;
             width: 80%;
             max-width: 800px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <button class="secret-button" onclick="showVideo()">SECRET</button>
-    <video id="video" controls>
+    <video id="video" controls autoplay>
         <source src="rickroll.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <script>
         function showVideo() {
-            document.getElementById('video').style.display = 'block';
+            const button = document.querySelector('.secret-button');
+            const video = document.getElementById('video');
+            
+            button.classList.add('animate');
+            button.addEventListener('animationend', () => {
+                button.style.display = 'none';
+                video.style.display = 'block';
+            });
         }
     </script>
 </body>
