@@ -12,6 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden; /* Prevents scrollbars from showing */
         }
         .secret-button {
             padding: 20px 40px;
@@ -21,6 +22,8 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
+            position: absolute;
+            animation: moveButton 5s linear infinite;
         }
         .secret-button:hover {
             background-color: darkred;
@@ -29,6 +32,11 @@
             display: none;
             width: 80%;
             max-width: 800px;
+        }
+        @keyframes moveButton {
+            0% { left: 0; }
+            50% { left: calc(100% - 200px); } /* 200px is the width of the button */
+            100% { left: 0; }
         }
     </style>
 </head>
